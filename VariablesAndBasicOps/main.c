@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     case '/':
         if (valueTwo == 0)
         {
-        printf("You cannot divide by zero!!");
+        printf("You cannot divide by zero!!\n");
         goto fail;
         }
         answer = valueOne/valueTwo;

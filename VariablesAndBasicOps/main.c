@@ -16,6 +16,11 @@ int main(int argc, char *argv[])
     switch(op)
     {
     case '/':
+        if (valueTwo == 0)
+        {
+        printf("You cannot divide by zero!!");
+        goto fail;
+        }
         answer = valueOne/valueTwo;
         break;
     case '*':

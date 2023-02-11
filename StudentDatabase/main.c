@@ -10,6 +10,8 @@ struct student {
 int main()
 {
     //printf("Hello world!\n");
+    FILE *fp;
+    fp = fopen("students.txt", "w");
     int i;
     int numberOfStudents;
     printf("This database can hold up to 10 student.\nHow many students would you like to enter into the database?\n");
@@ -27,8 +29,11 @@ int main()
         scanf("%s", s[i].firstName);
         printf("Please enter marks:\n");
         scanf("%f", &s[i].marks);
+        fprintf(fp,"Student Name: %s\nRoll: %d\nMarks: %.2f\n", s[i].firstName, s[i].roll, s[i].marks);
+        fprintf(fp,"------\n");
     }
-    printf("Displaying information about current roster...\n");
+    fclose(fp);
+    printf("Information saved in student file.\nDisplaying information about current roster...\n\n");
 
     //displaying...
     for (i=0;i<numberOfStudents;i++){

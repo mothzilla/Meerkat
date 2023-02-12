@@ -120,6 +120,25 @@ void displayStudentRoster() {
     }
 }
 
+void printRoster() {
+
+    char fileName[50];
+    int j;
+
+    printf("Please enter a name for the file (followed by .txt):\n");
+    scanf("%s", &fileName);
+    FILE *fp;
+    fp = fopen(fileName, "w");
+
+    for (j=0;j<i;j++) {
+        fprintf(fp,"Student Name: %s\nRoll: %d\nMarks: %.2f\n", s[j].firstName, s[j].roll, s[j].marks);
+        fprintf(fp,"------\n");
+    }
+
+    fclose(fp);
+
+}
+
 int main()
 {
     //printf("Hello world!\n");
@@ -129,10 +148,10 @@ int main()
     int choice;
     //int numberOfStudents;
 
-    while (choice != 6){
+    while (choice != 7){
         printf("This database can hold up to 25 students.\nPlease select an operation.\n\n");
         printf("1. Create New Student\n2. Lookup Existing Student Using Rollcall\n");
-        printf("3. Modify Existing Student\n4. Delete Student\n5. Display Roster\n6. Exit Menu\n");
+        printf("3. Modify Existing Student\n4. Delete Student\n5. Display Roster\n6. Print Roster\n7. Exit Menu\n");
         //scanf("%d", &numberOfStudents);
         scanf("%d", &choice);
 
@@ -152,7 +171,10 @@ int main()
         case 5:
             displayStudentRoster();
             break;
-        case 6:
+         case 6:
+            printRoster();
+            break;
+        case 7:
             exit(0);
             break;
         default:
@@ -161,29 +183,6 @@ int main()
             break;
         }
     }
-
-    //if (numberOfStudents>25){
-        //printf("Too many students! Try again when you can follow directions...");
-        //exit(EXIT_FAILURE);
-    //}
-    //printf("Please enter the information of 5 students:\n");
-
-    //begin to store info
-
-    /*
-    for (i=0;i<numberOfStudents;i++) {
-        s[i].roll = i+1;
-        printf("For student with roll number %d, please enter first name:\n", s[i].roll);
-        scanf("%s", s[i].firstName);
-        printf("Please enter marks:\n");
-        scanf("%f", &s[i].marks);
-        //fprintf(fp,"Student Name: %s\nRoll: %d\nMarks: %.2f\n", s[i].firstName, s[i].roll, s[i].marks);
-        //fprintf(fp,"------\n");
-    }
-
-    //fclose(fp);
-    */
-
 
     exit(EXIT_SUCCESS);
 }
